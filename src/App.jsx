@@ -1,9 +1,9 @@
 import { useState } from "react";
+import Search from "./components/search.jsx";
 import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0);
-
+const App = () => {
+  const [searchTerm, setSearchTerm] = useState("");
   return (
     <main>
       <div className="pattern" />
@@ -15,9 +15,11 @@ function App() {
             without the Hassle
           </h1>
         </header>
+
+        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       </div>
     </main>
   );
-}
+};
 
 export default App;
