@@ -14,11 +14,13 @@ const API_OPTIONS = {
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const fetchMovies = async () => {
     try {
     } catch (error) {
       console.error(`Error fetching movies: ${error}`);
+      setErrorMessage("Error fetching movies. Please try again later.");
     }
   };
 
@@ -33,9 +35,9 @@ const App = () => {
             Find <span className="text-gradient">Movies</span>You'll Enjoy
             without the Hassle
           </h1>
-        </header>
 
-        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+          <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        </header>
       </div>
     </main>
   );
