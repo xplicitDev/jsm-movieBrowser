@@ -67,7 +67,7 @@ const App = () => {
           <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         </header>
 
-        <section className="allMovies">
+        <section className="all-movies">
           <h2 className="mt-[40px]">All Movies</h2>
 
           {isLoading ? (
