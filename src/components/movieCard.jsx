@@ -9,7 +9,7 @@ const movieCard = ({
         src={
           poster_path
             ? `https://image.tmdb.org/t/p/w500${poster_path}`
-            : "/no-movie.png"
+            : "/No-Poster.png"
         }
         alt={title}
       />
@@ -23,6 +23,12 @@ const movieCard = ({
           </div>
 
           <span>•</span>
+          <p className="lang">{original_language}</p>
+
+          <span>•</span>
+          <p className="year">
+            {release_date ? release_date.split("-")[0] : "N/A"}
+          </p>
         </div>
       </div>
     </div>
