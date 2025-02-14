@@ -3,6 +3,7 @@ import { useDebounce } from "react-use";
 import Search from "./components/search.jsx";
 import Spinner from "./components/spinner.jsx";
 import MovieCard from "./components/movieCard.jsx";
+import { updateSearchCount } from "./appwrite.js";
 
 const API_BASE_URL = "https://api.themoviedb.org/3";
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -38,7 +39,6 @@ const App = () => {
       }
 
       const data = await response.json();
-      console.log(data);
 
       if (data.response == "False") {
         setErrorMessage(
@@ -48,6 +48,7 @@ const App = () => {
         return;
       }
       setmovieList(data.results || []);
+      updateSearchCount();
     } catch (error) {
       console.error(`Error fetching movies: ${error}`);
       setErrorMessage("Error fetching movies. Please try again later.");
