@@ -8,22 +8,22 @@ const client = new Client()
   .setEndpoint("https://cloud.appwrite.io/v1")
   .setProject(PROJECT_ID);
 
-const databse = new Databases(client);
+const database = new Databases(client);
 
 export const updateSearchCount = async (searchTerm, movie) => {
   try {
-    const result = await databse.listDoucumets(DATABASE_ID, COLLECTION_ID, [
+    const result = await database.listDocuments(DATABASE_ID, COLLECTION_ID, [
       Query.equal("searchTerm", searchTerm),
     ]);
 
     if (result.documents.lenght > 0) {
       const doc = result.documents[0];
 
-      await databse.updateDocument(DATABASE_ID, COLLECTION_ID, doc.$id, {
+      await database.updateDocument(DATABASE_ID, COLLECTION_ID, doc.$id, {
         count: doc.count + 1,
       });
     } else {
-      await databse.createDocument(DATABASE_ID, COLLECTION_ID, ID.unique(), {
+      await database.createDocument(DATABASE_ID, COLLECTION_ID, ID.unique(), {
         searchTerm,
         count: 1,
         movie_id: movie.id,
